@@ -14,8 +14,9 @@
     },
     methods: {
       fetchCustomer(id) {
-        this.$http.get('https://swapi.com/people/' + id + '/')
+        this.$http.get('https://swapi.com/api/people/' + id + '/')
             .then(function(response) {
+              console.log("Response: " + response.body);
               this.customer = response.body;
             })
       }
