@@ -42,7 +42,13 @@ export default {
                 });
         }
     },
+    // These are called hooks
+    // CREATED hook
     created: function() {
+        this.fetchCustomers();
+    },
+    // UPDATED hook
+    updated: function() {
         this.fetchCustomers();
     }
 }
