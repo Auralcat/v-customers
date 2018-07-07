@@ -6,6 +6,7 @@ import VueRouter from 'vue-router'
 import vueResource from 'vue-resource'
 import Customers from './components/Customers'
 import About from './components/About'
+import Add from './components/Add'
 
 Vue.use(vueResource);
 Vue.use(VueRouter);
@@ -16,12 +17,14 @@ const router = new VueRouter({
   // / is the base of the website. It's set to the Customers component.
   routes: [
     {path: '/', component: Customers},
-    {path: '/about', component: About}
+    {path: '/about', component: About},
+    {path: '/add', component: Add}
   ]
 });
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
+// TODO: replace the template section with a Main component.
 new Vue({
   router,
   template: `
@@ -41,6 +44,9 @@ new Vue({
             <ul class="nav navbar-nav">
               <li><router-link to="/">Home</router-link></li>
               <li><router-link to="/about">About</router-link></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><router-link to="/add">Add Customer</router-link></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
