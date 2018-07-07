@@ -18,7 +18,8 @@
         <td>{{customer.name}}</td>
         <td>{{customer.gender}}</td>
         <td>{{customer.birth_year}}</td>
-        <td><router-link class="btn btn-default" v-bind:to="'/customer/'+customer.id">View</router-link></td>
+        <!-- Using indexOf because SWAPI doesn't have an id field -->
+        <td><router-link class="btn btn-default" v-bind:to="'/customer/' + (customers.indexOf(customer) + 1)">View</router-link></td>
       </tr>
     </tbody>
   </table>

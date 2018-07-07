@@ -1,6 +1,6 @@
 <template>
   <div class="details container">
-    <h1 class="page-header">Details</h1>
+    <h1 class="page-header">{{customer.name}}</h1>
   </div>
 </template>
 
