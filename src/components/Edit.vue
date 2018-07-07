@@ -1,6 +1,6 @@
 <template>
   <div class="update container">
-    <h1 class="page-header">Add Customer</h1>
+    <h1 class="page-header">Edit Customer</h1>
     <!-- Customer add form -->
     <form action="" v-on:submit="updateCustomer">
       <div class="well">
@@ -55,7 +55,15 @@
         customer: {}
       }
     },
+    /* Improvement idea: Why not use a mixin for these common methods? */
     methods: {
+      fetchCustomer() {
+        this.$http.get('https://swapi.com/api/people/' + id + '/')
+            .then(function(response) {
+              console.log("Response: " + response.body);
+              this.customer = response.body;
+            })
+      },
       updateCustomer(e) {
         console.log("You can validate this!");
         if (!this.customer.first_name
@@ -86,7 +94,11 @@
         }
         e.preventDefault();
       }
+    },
+    created: function() {
+      this.fetchCustomer(this.$route.params.id);
     }
+
   }
 </script>
 
