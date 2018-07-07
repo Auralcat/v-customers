@@ -1,11 +1,21 @@
 <template>
   <div class="alert alert-warning alert-dismissible" role="alert">
     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-    <strong>Warning!</strong> Better check yourself, you're not looking too good.
+    {{message}}
   </div>
 </template>
 
 <script>
+  export default {
+    name: 'alert',
+    /* This is how you pass variables to components, through properties */
+    props: ['message'],
+    data() {
+      return {
+
+      }
+    }
+  }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

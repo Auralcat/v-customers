@@ -1,5 +1,7 @@
 <template>
 <div class="customers container">
+  <Alert message="test"></Alert>
+  <Alert message="I can pile these as much as I want"></Alert>
   <h1 class="page-header">Manage Customers</h1>
   <table class="table table-striped">
     <thead>
@@ -23,13 +25,17 @@
 </template>
 
 <script>
+/* Yo dawg, I heard you like components, so I'm importing a component
+  inside your component
+  */
+import Alert from './Alert';
 export default {
-  name: 'customers',
-  data () {
-    return {
-        customers: []
-    }
-  },
+    name: 'customers',
+    data() {
+        return {
+            customers: []
+        }
+    },
     methods: {
         // Use vue-resource to interact with the API
         fetchCustomers() {
@@ -50,9 +56,12 @@ export default {
     // UPDATED hook
     updated: function() {
         this.fetchCustomers();
+    },
+    /* Declare your components */
+    components: {
+      Alert
     }
-}
-</script>
+}</script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
