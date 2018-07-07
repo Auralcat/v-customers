@@ -32,8 +32,11 @@
               this.customer = response.body;
             })
       },
-      deleteCustomer() {
-
+      deleteCustomer(id) {
+        this.$http.delete('https://swapi.com/api/people/' + id + '/')
+            .then(function(response) {
+              this.$router.push({path: '/', query: {alert: 'Customer Deleted.'}})
+            })
       }
     },
     created: function() {
