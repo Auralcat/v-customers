@@ -9,9 +9,21 @@ export default {
   name: 'customers',
   data () {
     return {
-
+        customers: []
     }
-  }
+  },
+    methods: {
+        // Use vue-resource to interact with the API
+        fetchCustomers() {
+            this.$http.get('https://swapi.co/api/people/')
+                .then(function(response) {
+                    console.log(response.body)
+                });
+        }
+    },
+    created: function() {
+        this.fetchCustomers();
+    }
 }
 </script>
 
