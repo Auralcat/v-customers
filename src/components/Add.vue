@@ -74,6 +74,13 @@
             city: this.customer.city,
             state: this.customer.state
           }
+
+          /* Use vue-resource to POST the answers */
+          this.$http.post('https://swapi/api/customer/add', newCustomer)
+              .then(function(response) {
+                // Use vue-router to redirect to home page
+                this.$router.push({path: '/'});
+              })
           e.preventDefault();
         }
         e.preventDefault();
