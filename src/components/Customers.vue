@@ -1,7 +1,7 @@
 <template>
-  <div class="customers">
-    CUSTOMERS
-  </div>
+<div class="customers container">
+  <h1 class="page-header">Manage Customers</h1>
+</div>
 </template>
 
 <script>
