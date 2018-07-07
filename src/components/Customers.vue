@@ -1,7 +1,8 @@
 <template>
 <div class="customers container">
-  <Alert message="test"></Alert>
-  <Alert message="I can pile these as much as I want"></Alert>
+  <!-- v-bind relays the contents of the alert variable from this component -->
+  <Alert v-if="alert" v-bind:message="alert"></Alert>
+  <!-- <Alert message="I can pile these as much as I want"></Alert> -->
   <h1 class="page-header">Manage Customers</h1>
   <table class="table table-striped">
     <thead>
@@ -33,7 +34,8 @@ export default {
     name: 'customers',
     data() {
         return {
-            customers: []
+          customers: [],
+          alert: ''
         }
     },
     methods: {
@@ -51,6 +53,9 @@ export default {
     // These are called hooks
     // CREATED hook
     created: function() {
+      if (this.$route.query.alert) {
+        this.alert = this.$route.query.alert;
+      }
         this.fetchCustomers();
     },
     // UPDATED hook

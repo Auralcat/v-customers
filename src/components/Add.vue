@@ -79,7 +79,8 @@
           this.$http.post('https://swapi/api/customer/add', newCustomer)
               .then(function(response) {
                 // Use vue-router to redirect to home page
-                this.$router.push({path: '/'});
+                /* You can send a query along with the redirection. */
+                this.$router.push({path: '/', query: {alert: 'Customer Added.'}});
               })
           e.preventDefault();
         }
