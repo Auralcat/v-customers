@@ -4,6 +4,8 @@
   <Alert v-if="alert" v-bind:message="alert"></Alert>
   <!-- <Alert message="I can pile these as much as I want"></Alert> -->
   <h1 class="page-header">Manage Customers</h1>
+  <input class="form-control" name="" type="text" value="" placeholder="Enter Last Name" v-model="filterInput"/>
+  <br/>
   <table class="table table-striped">
     <thead>
       <tr>
@@ -14,7 +16,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr v-for="customer in customers">
+      <tr v-for="customer in filterBy(customers, filterInput)">
         <td>{{customer.name}}</td>
         <td>{{customer.gender}}</td>
         <td>{{customer.birth_year}}</td>
@@ -36,7 +38,8 @@ export default {
     data() {
         return {
           customers: [],
-          alert: ''
+          alert: '',
+          filterInput: '',
         }
     },
     methods: {
@@ -49,7 +52,12 @@ export default {
                     // "unexpected character at line 1 column 2 of the JSON data"
                     this.customers = response.body.results;
                 });
-        }
+        },
+      filterBy(list, value) {
+        return list.filter(function(customer) {
+          return customer.last_name.indexOf(value) > -1;
+        })
+      }
     },
     // These are called hooks
     // CREATED hook
