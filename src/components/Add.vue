@@ -52,7 +52,31 @@
     name: 'add',
     data() {
       return {
-        {}
+        customer: {}
+      }
+    },
+    methods: {
+      addCustomer(e) {
+        console.log("You can validate this!");
+        if (!this.customer.first_name
+            || !this.customer.last_name
+            || !this.customer.email) {
+          console.log("Please fill the required fields.");
+        } else {
+          console.log("Good.");
+          /* Create object with the answers. */
+          let newCustomer = {
+            first_name: this.customer.first_name,
+            last_name: this.customer.last_name,
+            email: this.customer.email,
+            phone: this.customer.phone,
+            address: this.customer.address,
+            city: this.customer.city,
+            state: this.customer.state
+          }
+          e.preventDefault();
+        }
+        e.preventDefault();
       }
     }
   }
