@@ -2,7 +2,10 @@
   <div class="details container">
     <router-link to="/">Back</router-link>
     <h1 class="page-header">{{customer.first_name}} {{customer.last_name}}
-      <span class="pull-right"><button class="btn btn-danger" v-on:click="deleteCustomer(customer.id)">Delete</button></span>
+      <span class="pull-right">
+        <button class="btn btn-danger" v-on:click="deleteCustomer(customer.id)">Delete</button>
+        <button class="btn btn-warning" v-on:click="updateCustomer(customer.id)">Edit</button>
+      </span>
     </h1>
     <ul class="list-group">
       <li class="list-group-item"><span class="glyphicon glyphicon-phone" aria-hidden="true"></span></li>
@@ -24,6 +27,7 @@
         customer: ''
       }
     },
+    /* Replace the API endpoints later with the SlimApp endpoints! */
     methods: {
       fetchCustomer(id) {
         this.$http.get('https://swapi.com/api/people/' + id + '/')
