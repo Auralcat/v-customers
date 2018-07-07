@@ -22,7 +22,11 @@ Vue.config.productionTip = false
 
 /* eslint-disable no-new */
 new Vue({
-  el: '#app',
-  components: { App },
-  template: '<App/>'
-})
+  router,
+  template: `
+    <div id="app">
+      <router-link to="/about">This is the About section</router-link>
+      <router-view></router-view>
+    </div>
+`
+}).$mount('#app')
