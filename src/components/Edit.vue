@@ -1,5 +1,6 @@
 <template>
   <div class="update container">
+    <Alert v-if="alert" v-bind:message="alert"></Alert>
     <h1 class="page-header">Edit Customer</h1>
     <!-- Customer add form -->
     <form action="" v-on:submit="updateCustomer">
@@ -48,11 +49,13 @@
 </template>
 
 <script>
+  import Alert from './Alert';
   export default {
     name: 'add',
     data() {
       return {
-        customer: {}
+        customer: {},
+        alert: ''
       }
     },
     /* Improvement idea: Why not use a mixin for these common methods? */
@@ -69,7 +72,7 @@
         if (!this.customer.first_name
             || !this.customer.last_name
             || !this.customer.email) {
-          console.log("Please fill the required fields.");
+          this.alert = "Please fill the required fields.";
         } else {
           console.log("Good.");
           /* Create object with the answers. */
@@ -97,6 +100,9 @@
     },
     created: function() {
       this.fetchCustomer(this.$route.params.id);
+    },
+    components: {
+      Alert
     }
 
   }

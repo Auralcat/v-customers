@@ -60,13 +60,13 @@
     },
     methods: {
       addCustomer(e) {
-        console.log("You can validate this!");
+        this.alert = "You can validate this!";
         if (!this.customer.first_name
             || !this.customer.last_name
             || !this.customer.email) {
           this.alert = "Please fill the required fields.";
         } else {
-          console.log("Good.");
+          this.alert = "Good...";
           /* Create object with the answers. */
           let newCustomer = {
             first_name: this.customer.first_name,
