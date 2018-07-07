@@ -1,5 +1,6 @@
 <template>
   <div class="add container">
+    <Alert v-if="alert" v-bind:message="alert"></Alert>
     <h1 class="page-header">Add Customer</h1>
     <!-- Customer add form -->
     <form action="" v-on:submit="addCustomer">
@@ -48,11 +49,13 @@
 </template>
 
 <script>
+  import Alert from './Alert';
   export default {
     name: 'add',
     data() {
       return {
-        customer: {}
+        customer: {},
+        alert: ''
       }
     },
     methods: {
@@ -61,7 +64,7 @@
         if (!this.customer.first_name
             || !this.customer.last_name
             || !this.customer.email) {
-          console.log("Please fill the required fields.");
+          this.alert = "Please fill the required fields.";
         } else {
           console.log("Good.");
           /* Create object with the answers. */
@@ -86,6 +89,9 @@
         }
         e.preventDefault();
       }
+    },
+    components: {
+      Alert
     }
   }
 </script>
