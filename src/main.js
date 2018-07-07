@@ -13,6 +13,7 @@ Vue.use(VueRouter);
 const router = new VueRouter({
   mode: 'history',
   base: __dirname,
+  // / is the base of the website. It's set to the Customers component.
   routes: [
     {path: '/', component: Customers},
     {path: '/about', component: About}
