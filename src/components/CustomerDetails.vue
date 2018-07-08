@@ -8,8 +8,8 @@
       </span>
     </h1>
     <ul class="list-group">
-      <li class="list-group-item"><span class="glyphicon glyphicon-phone" aria-hidden="true"></span></li>
-      <li class="list-group-item"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></li>
+      <li class="list-group-item"><span class="glyphicon glyphicon-phone" aria-hidden="true">{{customer.phone}}</span></li>
+      <li class="list-group-item"><span class="glyphicon glyphicon-envelope" aria-hidden="true">{{customer.email}}</span></li>
     </ul>
     <ul class="list-group">
       <li class="list-group-item">{{customer.address}}</li>

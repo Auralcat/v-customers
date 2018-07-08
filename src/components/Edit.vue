@@ -61,7 +61,7 @@
     /* Improvement idea: Why not use a mixin for these common methods? */
     methods: {
       fetchCustomer() {
-        this.$http.get('https://swapi.com/api/people/' + id + '/')
+        this.$http.get('http://slimapp/api/customer/' + id)
             .then(function(response) {
               console.log("Response: " + response.body);
               this.customer = response.body;
@@ -87,7 +87,7 @@
           }
 
           /* Use vue-resource to PUT the update */
-          this.$http.put('https://swapi/api/customer/update/' + this.$route.params.id, updateCustomer)
+          this.$http.put('http://slimapp/api/customer/update/' + this.$route.params.id, updateCustomer)
               .then(function(response) {
                 // Use vue-router to redirect to home page
                 /* You can send a query along with the redirection. */
