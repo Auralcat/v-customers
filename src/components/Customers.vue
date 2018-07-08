@@ -9,19 +9,27 @@
   <table class="table table-striped">
     <thead>
       <tr>
-        <th>Name</th>
-        <th>Gender</th>
-        <th>Birth Year</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Phone</th>
+        <th>Email</th>
+        <th>Address</th>
+        <th>City</th>
+        <th>State</th>
         <th></th>
       </tr>
     </thead>
     <tbody>
       <tr v-for="customer in filterBy(customers, filterInput)">
-        <td>{{customer.name}}</td>
-        <td>{{customer.gender}}</td>
-        <td>{{customer.birth_year}}</td>
+        <td>{{customer.first_name}}</td>
+        <td>{{customer.last_name}}</td>
+        <td>{{customer.phone}}</td>
+        <td>{{customer.email}}</td>
+        <td>{{customer.address}}</td>
+        <td>{{customer.city}}</td>
+        <td>{{customer.state}}</td>
         <!-- Using indexOf because SWAPI doesn't have an id field -->
-        <td><router-link class="btn btn-default" v-bind:to="'/customer/' + (customers.indexOf(customer) + 1)">View</router-link></td>
+        <td><router-link class="btn btn-default" v-bind:to="'/customer/' + customer.id">View</router-link></td>
       </tr>
     </tbody>
   </table>
@@ -45,7 +53,7 @@ export default {
     methods: {
         // Use vue-resource to interact with the API
         fetchCustomers() {
-            this.$http.get('https://swapi.co/api/people/')
+            this.$http.get('http://slimapp/api/customers')
                 .then(function(response) {
                     console.log(response.body.results);
                     // I removed JSON.parse() because of this error, without that fn it works.
