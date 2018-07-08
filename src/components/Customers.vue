@@ -6,33 +6,39 @@
   <h1 class="page-header">Manage Customers</h1>
   <input class="form-control" name="" type="text" value="" placeholder="Enter Last Name" v-model="filterInput"/>
   <br/>
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>Phone</th>
-        <th>Email</th>
-        <th>Address</th>
-        <th>City</th>
-        <th>State</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr v-for="customer in filterBy(customers, filterInput)">
-        <td>{{customer.first_name}}</td>
-        <td>{{customer.last_name}}</td>
-        <td>{{customer.phone}}</td>
-        <td>{{customer.email}}</td>
-        <td>{{customer.address}}</td>
-        <td>{{customer.city}}</td>
-        <td>{{customer.state}}</td>
-        <!-- Using indexOf because SWAPI doesn't have an id field -->
-        <td><router-link class="btn btn-default" v-bind:to="'/customer/' + customer.id">View</router-link></td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="results" v-if="ok">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Phone</th>
+          <th>Email</th>
+          <th>Address</th>
+          <th>City</th>
+          <th>State</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="customer in filterBy(customers, filterInput)">
+          <td>{{customer.first_name}}</td>
+          <td>{{customer.last_name}}</td>
+          <td>{{customer.phone}}</td>
+          <td>{{customer.email}}</td>
+          <td>{{customer.address}}</td>
+          <td>{{customer.city}}</td>
+          <td>{{customer.state}}</td>
+          <!-- Using indexOf because SWAPI doesn't have an id field -->
+          <td><router-link class="btn btn-default" v-bind:to="'/customer/' + customer.id">View</router-link></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <atom-spinner v-else
+    :animation-duration="1000"
+    :size="60"
+    :color="'ff1d5e'" />
 </div>
 </template>
 
@@ -41,12 +47,15 @@
   inside your component
   */
 import Alert from './Alert';
+import AtomSpinner from '../../node_modules/epic-spinners/src/components/lib/AtomSpinner';
+
 export default {
     name: 'customers',
     data() {
         return {
           customers: [],
           alert: '',
+          ok: '',
           filterInput: '',
         }
     },
@@ -55,8 +64,8 @@ export default {
         fetchCustomers() {
             this.$http.get('http://slimapp/api/customers')
                 .then(function(response) {
-                    console.log(response.body);
                     this.customers = response.body;
+                    this.ok = response.ok;
                 });
         },
       filterBy(list, value) {
@@ -80,7 +89,8 @@ export default {
     },
     /* Declare your components */
     components: {
-      Alert
+      Alert,
+      AtomSpinner
     }
 }</script>
 
