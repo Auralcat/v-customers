@@ -55,10 +55,8 @@ export default {
         fetchCustomers() {
             this.$http.get('http://slimapp/api/customers')
                 .then(function(response) {
-                    console.log(response.body.results);
-                    // I removed JSON.parse() because of this error, without that fn it works.
-                    // "unexpected character at line 1 column 2 of the JSON data"
-                    this.customers = response.body.results;
+                    console.log(response.body);
+                    this.customers = response.body;
                 });
         },
       filterBy(list, value) {

@@ -79,7 +79,7 @@
           }
 
           /* Use vue-resource to POST the answers */
-          this.$http.post('https://swapi/api/customer/add', newCustomer)
+          this.$http.post('http://slimapp/api/customer/add', newCustomer)
               .then(function(response) {
                 // Use vue-router to redirect to home page
                 /* You can send a query along with the redirection. */

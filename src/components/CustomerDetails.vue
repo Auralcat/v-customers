@@ -30,14 +30,14 @@
     /* Replace the API endpoints later with the SlimApp endpoints! */
     methods: {
       fetchCustomer(id) {
-        this.$http.get('https://swapi.com/api/people/' + id + '/')
+        this.$http.get('http://slimapp/api/customer/' + id)
             .then(function(response) {
               console.log("Response: " + response.body);
               this.customer = response.body;
             })
       },
       deleteCustomer(id) {
-        this.$http.delete('https://swapi.com/api/people/' + id + '/')
+        this.$http.delete('http://slimapp/api/customer/delete/' + id)
             .then(function(response) {
               this.$router.push({path: '/', query: {alert: 'Customer Deleted.'}})
             })
