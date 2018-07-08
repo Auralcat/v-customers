@@ -32,11 +32,14 @@
       fetchCustomer(id) {
         this.$http.get('http://slimapp/api/customer/' + id)
             .then(function(response) {
-              console.log("Response: " + response.body);
-              this.customer = response.body;
+              console.log("Response: " + JSON.stringify(response.body));
+              /* The API is sending an array of customers */
+              this.customer = response.body.pop();
+              console.log("This customer's name is " + JSON.stringify(this.customer.first_name));
             })
       },
       deleteCustomer(id) {
+        console.log("Deleting customer " + id);
         this.$http.delete('http://slimapp/api/customer/delete/' + id)
             .then(function(response) {
               this.$router.push({path: '/', query: {alert: 'Customer Deleted.'}})
