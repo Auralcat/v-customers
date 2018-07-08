@@ -29,7 +29,7 @@
           <td>{{customer.address}}</td>
           <td>{{customer.city}}</td>
           <td>{{customer.state}}</td>
-          <!-- Using indexOf because SWAPI doesn't have an id field -->
+          <!-- Adding view button in the end of table body -->
           <td><router-link class="btn btn-default" v-bind:to="'/customer/' + customer.id">View</router-link></td>
         </tr>
       </tbody>
@@ -92,7 +92,8 @@ export default {
       Alert,
       AtomSpinner
     }
-}</script>
+  }
+</script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
